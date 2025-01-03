@@ -1,11 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
-export default function HamburgerMenuIcon() {
-  const router = useRouter();
-  const lang = "en";
+export default function HamburgerMenuIcon({ lang }) {
   return (
     <>
       <button className="bg-white border border-zinc-300 text-zinc-800 px-4 py-2 rounded-full hover:shadow-md flex gap-3 items-center justify-center">
@@ -22,7 +19,7 @@ export default function HamburgerMenuIcon() {
             </li>
           </Link>
 
-          <Link href="/registar" className="w-full">
+          <Link href={`/${lang}/register`} className="w-full">
             <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
               Signup
             </li>

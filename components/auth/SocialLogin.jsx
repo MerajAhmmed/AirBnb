@@ -1,6 +1,17 @@
+"use client";
+
+import { signIn } from "next-auth/react";
+
 export default function SocialLogin() {
+  const handleAuth = (event) => {
+    signIn("google", { callbackUrl: `http://localhost:3000/` });
+  };
+
   return (
-    <button className="w-full flex items-center justify-center border border-gray-300 rounded-full py-3 hover:bg-gray-50 transition">
+    <button
+      className="w-full flex items-center justify-center border border-gray-300 rounded-full py-3 hover:bg-gray-50 transition"
+      onClick={handleAuth}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

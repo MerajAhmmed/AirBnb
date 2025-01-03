@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function SignUp() {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div className=" bg-white bg-opacity-50 z-50 flex items-center justify-center">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-md px-6 py-1">
         <CloseBtn />
         <div className="text-center mb-6">

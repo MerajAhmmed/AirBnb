@@ -1,6 +1,7 @@
 import Logo from "@/public/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import Logout from "../auth/LogOut";
 import HamburgerMenuIcon from "./HamburgerMenuIcon";
 import LanguageSwitcherBtn from "./LanguageSwitcherBtn";
 import SearchBar from "./SearchBar";
@@ -23,8 +24,9 @@ export default function Header({ lang }) {
       <SearchBar lang={lang} />
 
       <div className="flex items-center space-x-4 relative justify-end">
+        <Logout lang={lang} />
         <LanguageSwitcherBtn />
-        <HamburgerMenuIcon />
+        <HamburgerMenuIcon lang={lang} />
       </div>
     </nav>
   );
