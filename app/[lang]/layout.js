@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
+import { SessionProvider } from "next-auth/react";
 import { dbConnect } from "../lib/mongo";
 
 export const metadata = {
@@ -9,14 +10,17 @@ export const metadata = {
 
 export default async function LangLayout({ children, auth, params: { lang } }) {
   await dbConnect();
+
   return (
     <html>
       <body>
         <>
-          <Header lang={lang} />
-          {auth}
-          {children}
-          <Footer />
+          <SessionProvider>
+            <Header lang={lang} />
+            {auth}
+            {children}
+            <Footer />
+          </SessionProvider>
         </>
       </body>
     </html>

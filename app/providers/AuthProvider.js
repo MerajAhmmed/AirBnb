@@ -1,13 +1,22 @@
-// "use client";
+// // app/providers/AuthProvider.js
+// import { createContext, useContext } from "react";
+// import useAuthStatus from "../hooks/useAuthStatus";
 
-// import { useState } from "react";
-// import { AuthContext } from "../context";
+// // Create context
+// const AuthContext = createContext();
 
-// export default function AuthProvider({ children }) {
-//   const [author, setAuthor] = useState(null);
+// // AuthProvider to wrap your app
+// export const AuthProvider = ({ children }) => {
+//   const { isAuthenticated, status } = useAuthStatus(); // Using the custom hook
+
 //   return (
-//     <AuthContext.Provider value={{ author, setAuthor }}>
+//     <AuthContext.Provider value={{ isAuthenticated, status }}>
 //       {children}
 //     </AuthContext.Provider>
 //   );
-// }
+// };
+
+// // Custom hook to use authentication status
+// export const useAuth = () => {
+//   return useContext(AuthContext);
+// };
