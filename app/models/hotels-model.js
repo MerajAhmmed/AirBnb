@@ -10,37 +10,47 @@ const hotelSchema = new Schema(
       type: String,
       required: true,
     },
-    images: {
-      type: Array,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    rooms: {
-      type: Number,
-      required: true,
-    },
-    bedrooms: {
-      type: Number,
-      required: true,
-    },
-    beds: {
-      type: Number,
-      required: true,
-    },
-    guests: {
-      type: Number,
-      required: true,
-    },
     description: {
       type: String,
+      required: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
+    pricePerNight: {
+      type: Number,
+      required: true,
+    },
+    totalGuests: {
+      type: Number,
+      required: true,
+    },
+    totalBeds: {
+      type: Number,
+      required: true,
+    },
+    totalRooms: {
+      type: Number,
+      required: true,
+    },
+    // availableRooms: {
+    //   type: Number,
+    //   required: true,
+    // },
+    // thumbNailUrl: {
+    //   type: String,
+    //   required: true,
+    // },
+    gallery: {
+      type: [String],
+      required: true,
+    },
+    // amenities: {
+    //   type: [String],
+    //   required: true,
+    // },
   },
   { timestamps: true }
 );

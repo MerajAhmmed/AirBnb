@@ -1,5 +1,6 @@
-import { Hotel } from "@/models/hotel-model";
-import { User } from "@/models/user-model";
+import { dbConnect } from "@/app/lib/mongo";
+import { hotelModel } from "@/app/models/hotels-model";
+import { userModel } from "@/app/models/user-model";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
@@ -8,18 +9,22 @@ export const POST = async (request) => {
     email,
     name,
     location,
-    images,
-    price,
-    rooms,
-    bedrooms,
-    beds,
-    guests,
+    gallery,
+    pricePerNight,
+    totalRooms,
+    totalBedrooms,
+    totalBeds,
+    totalGuests,
     description,
     path,
+    // availableRooms,
+    // thumbNailUrl,
+    // amenities,
   } = await request.json();
-
+  console.log(request);
+  await dbConnect();
   try {
-    const user = await User.findOne({ email });
+    const user = await userModel.findOne({ email });
 
     if (!user) {
       return new NextResponse(
@@ -35,17 +40,19 @@ export const POST = async (request) => {
     const newHotel = {
       name,
       location,
-      images,
-      price,
-      rooms,
-      bedrooms,
-      beds,
-      guests,
       description,
       owner: userId,
+      pricePerNight,
+      totalGuests,
+      totalBeds,
+      totalRooms,
+      // availableRooms,
+      // thumbNailUrl,
+      gallery,
+      // amenities,
     };
-
-    await Hotel.create(newHotel);
+    console.log(newHotel);
+    await hotelModel.create(newHotel);
 
     revalidatePath(path);
 

@@ -12,7 +12,7 @@ export default async function CreateHotelPage({ params: { lang } }) {
   }
   return (
     <div>
-      <CreateHotels />
+      <CreateHotels lang={lang} session={session} />
     </div>
   );
 }

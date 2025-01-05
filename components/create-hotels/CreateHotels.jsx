@@ -6,40 +6,47 @@ import HotelImage from "./HotelImage";
 import InputField from "./InputField";
 import PublishBtn from "./PublishBtn";
 
-export default function CreateHotels() {
-  // State to manage hotel info
+export default function CreateHotels({ session, lang }) {
   const [hotelInfo, setHotelInfo] = useState({
     name: "",
     location: "",
-    price: "",
-    rooms: "",
-    bedrooms: "",
-    beds: "",
+    pricePerNight: "",
+    totalRooms: "",
+    totalBedrooms: "",
+    totalBeds: "",
+    totalGuests: "",
     description: "",
+    // availableRooms: "",
+    // thumbNailUrl: "",
+    gallery: [],
+    // amenities: [],
   });
 
-  // State to control which field is being edited
   const [editingField, setEditingField] = useState(null);
 
-  // Handle edit mode
   const handleEdit = (fieldKey) => {
     setEditingField(fieldKey);
   };
 
-  // Handle save changes
   const handleSave = (fieldKey, newValue) => {
     setHotelInfo((prev) => ({
       ...prev,
       [fieldKey]: newValue,
     }));
-    setEditingField(null); // Exit edit mode
+    setEditingField(null);
+  };
+
+  const handleGalleryChange = (updatedGallery) => {
+    setHotelInfo((prev) => ({
+      ...prev,
+      gallery: updatedGallery,
+    }));
   };
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-8 relative">
-      <PublishBtn />
+      <PublishBtn lang={lang} session={session} hotelInfo={hotelInfo} />
 
-      {/* Hotel Name Input */}
       <InputField
         fieldKey="name"
         value={hotelInfo.name}
@@ -55,60 +62,59 @@ export default function CreateHotels() {
         </h1>
       </InputField>
 
-      {/* Hotel Description Input */}
-
       <InputField
-        key={"location"}
-        fieldKey={"location"}
-        value={hotelInfo.description}
+        fieldKey="location"
+        value={hotelInfo.location}
         isEditing={editingField === "location"}
         onEdit={handleEdit}
         onSave={handleSave}
       >
         <h1
           className="text-xl font-bold mb-2 text-zinc-500 edit"
-          id="Propertylocation"
+          id="propertyLocation"
         >
-          {hotelInfo.location || "Property location"}
+          {hotelInfo.location || "Property Location"}
         </h1>
       </InputField>
 
-      {/* <PropertyInfo /> */}
-      <HotelImage />
+      <HotelImage
+        gallery={hotelInfo.gallery}
+        onGalleryChange={handleGalleryChange}
+      />
 
       <div className="flex mb-4 gap-2">
         <div className="flex items-center space-x-3">
           <InputField
-            fieldKey="price"
-            value={hotelInfo.price}
-            isEditing={editingField === "price"}
+            fieldKey="pricePerNight"
+            value={hotelInfo.pricePerNight}
+            isEditing={editingField === "pricePerNight"}
             onEdit={handleEdit}
             onSave={handleSave}
             type="number"
           >
             <span className="text-xl font-bold text-gray-500">
-              {hotelInfo.price ? hotelInfo.price + "$" : "Price in USD"}
+              {hotelInfo.pricePerNight
+                ? `${hotelInfo.pricePerNight}$`
+                : "Price in USD"}
             </span>
           </InputField>
         </div>
         <span className="text-gray-500 ml-1">per night</span>
       </div>
 
-      {/* Editable Available Rooms */}
       <div className="flex items-center mb-4 text-gray-500">
         <InputField
-          key={"rooms"}
-          fieldKey={"rooms"}
-          type={"number"}
+          fieldKey="totalRooms"
+          type="number"
           min={1}
-          value={hotelInfo.rooms}
-          isEditing={editingField === "rooms"}
+          value={hotelInfo.totalRooms}
+          isEditing={editingField === "totalRooms"}
           onEdit={handleEdit}
           onSave={handleSave}
         >
           <span>
-            {hotelInfo.rooms
-              ? `Available ${hotelInfo.rooms} rooms`
+            {hotelInfo.totalRooms
+              ? `Available ${hotelInfo.totalRooms} rooms`
               : "Available X rooms"}
           </span>
         </InputField>
@@ -121,63 +127,61 @@ export default function CreateHotels() {
               <div className="flex items-center gap-2">
                 <i className="fas fa-person"></i>
                 <InputField
-                  key={"guests"}
-                  fieldKey={"guests"}
-                  type={"number"}
+                  fieldKey="totalGuests"
+                  type="number"
                   min={1}
-                  value={hotelInfo.guests}
-                  isEditing={editingField === "guests"}
+                  value={hotelInfo.totalGuests}
+                  isEditing={editingField === "totalGuests"}
                   onEdit={handleEdit}
                   onSave={handleSave}
                 >
-                  <span>{hotelInfo.guests || "How many Guest can Stay?"}</span>
+                  <span>
+                    {hotelInfo.totalGuests || "How many guests can stay?"}
+                  </span>
                 </InputField>
               </div>
               <div className="flex items-center gap-2">
                 <i className="fas fa-door-open"></i>
                 <InputField
-                  key={"bedrooms"}
-                  fieldKey={"bedrooms"}
-                  type={"number"}
+                  fieldKey="totalBedrooms"
+                  type="number"
                   min={1}
-                  value={hotelInfo.bedrooms}
-                  isEditing={editingField === "bedrooms"}
+                  value={hotelInfo.totalBedrooms}
+                  isEditing={editingField === "totalBedrooms"}
                   onEdit={handleEdit}
                   onSave={handleSave}
                 >
-                  <span>{hotelInfo.bedrooms || "How many Bedrooms ?"} </span>
+                  <span>{hotelInfo.totalBedrooms || "How many bedrooms?"}</span>
                 </InputField>
               </div>
               <div className="flex items-center gap-2">
                 <i className="fas fa-bed"></i>
                 <InputField
-                  key={"beds"}
-                  fieldKey={"beds"}
-                  type={"number"}
+                  fieldKey="totalBeds"
+                  type="number"
                   min={1}
-                  value={hotelInfo.beds}
-                  isEditing={editingField === "beds"}
+                  value={hotelInfo.totalBeds}
+                  isEditing={editingField === "totalBeds"}
                   onEdit={handleEdit}
                   onSave={handleSave}
                 >
-                  <span>{hotelInfo.beds || "How many beds available ?"}</span>
+                  <span>
+                    {hotelInfo.totalBeds || "How many beds available?"}
+                  </span>
                 </InputField>
               </div>
             </div>
           </div>
 
-          {/* <!-- Description --> */}
           <div className="mb-6">
             <h3 className="text-xl font-semibold mb-4">About this place</h3>
             <div className="flex items-center">
               <InputField
-                key={"description"}
-                fieldKey={"description"}
+                fieldKey="description"
                 value={hotelInfo.description}
                 isEditing={editingField === "description"}
                 onEdit={handleEdit}
                 onSave={handleSave}
-                textarea={true}
               >
                 <p className="text-gray-600 leading-relaxed edit">
                   {!hotelInfo.description
@@ -189,6 +193,7 @@ export default function CreateHotels() {
           </div>
         </div>
       </div>
+
       <Amenities />
     </div>
   );
