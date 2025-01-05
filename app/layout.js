@@ -1,4 +1,7 @@
 import "@/app/globals.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import { SessionProvider } from "next-auth/react";
 import { dbConnect } from "./lib/mongo";
 
 export const metadata = {
@@ -16,7 +19,9 @@ export default async function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SessionProvider>{children}</SessionProvider>
+      </body>
     </html>
   );
 }

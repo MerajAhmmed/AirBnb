@@ -1,12 +1,14 @@
 "use client";
 
-import useAuthStatus from "@/app/hooks/useAuthStatus";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 export default function HamburgerMenuIcon({ lang, session }) {
-  const { isAuthenticated } = useAuthStatus();
+  const sessionData = useSession();
+  const isAuthenticated = sessionData?.data?.user;
+  console.log(isAuthenticated);
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef(null);
 

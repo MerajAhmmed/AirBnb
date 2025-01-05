@@ -1,8 +1,8 @@
 "use client";
-import useAuthStatus from "@/app/hooks/useAuthStatus";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 const Logout = ({ lang }) => {
-  const { isAuthenticated, status } = useAuthStatus();
+  const sessionData = useSession();
+  const isAuthenticated = sessionData?.data?.user;
 
   return (
     <>
