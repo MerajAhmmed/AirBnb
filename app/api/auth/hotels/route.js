@@ -18,12 +18,13 @@ export const POST = async (request) => {
     description,
     path,
     // availableRooms,
-    // thumbNailUrl,
+
     // amenities,
   } = await request.json();
-  console.log(request);
-  await dbConnect();
+
+  // await dbConnect();
   try {
+    await dbConnect();
     const user = await userModel.findOne({ email });
 
     if (!user) {
@@ -47,12 +48,12 @@ export const POST = async (request) => {
       totalBeds,
       totalRooms,
       // availableRooms,
-      // thumbNailUrl,
+
       gallery,
       // amenities,
     };
-    console.log(newHotel);
-    await hotelModel.create(newHotel);
+
+    const hotelData = await hotelModel.create(newHotel);
 
     revalidatePath(path);
 

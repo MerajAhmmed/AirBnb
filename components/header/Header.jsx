@@ -2,13 +2,13 @@ import { auth } from "@/auth";
 import Logo from "@/public/assets/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import Logout from "../auth/LogOut";
 import HamburgerMenuIcon from "./HamburgerMenuIcon";
 import LanguageSwitcherBtn from "./LanguageSwitcherBtn";
 import SearchBar from "./SearchBar";
 
 export default async function Header({ lang }) {
   const session = await auth();
+
   return (
     <nav className="grid grid-cols-2 md:flex justify-between items-center py-3 bg-white border-b mb-6 md:gap-8 px-4 md:px-8 lg:px-20">
       <div className="flex items-center">
@@ -28,7 +28,6 @@ export default async function Header({ lang }) {
       <div className="flex items-center space-x-4 relative justify-end">
         <LanguageSwitcherBtn />
         <HamburgerMenuIcon lang={lang} session={session} />
-        <Logout lang={lang} session={session} />
       </div>
     </nav>
   );

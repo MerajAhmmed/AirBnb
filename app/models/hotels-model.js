@@ -39,10 +39,7 @@ const hotelSchema = new Schema(
     //   type: Number,
     //   required: true,
     // },
-    // thumbNailUrl: {
-    //   type: String,
-    //   required: true,
-    // },
+
     gallery: {
       type: [String],
       required: true,

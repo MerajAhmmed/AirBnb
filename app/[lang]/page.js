@@ -6,7 +6,7 @@ import { getDictionary } from "./dictionaries/dictionaries";
 export default async function Home({ params: { lang } }) {
   const dict = await getDictionary(lang);
   const hotelInfo = await getAllHotels();
-  console.log(hotelInfo);
+
   return (
     <>
       <section className="px-6">

@@ -17,8 +17,8 @@ export default function CreateHotels({ session, lang }) {
     totalGuests: "",
     description: "",
     // availableRooms: "",
-    // thumbNailUrl: "",
-    gallery: [],
+    thumbNailUrl: "",
+    gallery: ["", "", "", "", ""],
     // amenities: [],
   });
 
@@ -36,11 +36,15 @@ export default function CreateHotels({ session, lang }) {
     setEditingField(null);
   };
 
-  const handleGalleryChange = (updatedGallery) => {
-    setHotelInfo((prev) => ({
-      ...prev,
-      gallery: updatedGallery,
-    }));
+  const handleGalleryChange = (index, value) => {
+    setHotelInfo((prev) => {
+      const updatedGallery = [...prev.gallery];
+      updatedGallery[index] = value ?? "";
+      return {
+        ...prev,
+        gallery: updatedGallery,
+      };
+    });
   };
 
   return (
