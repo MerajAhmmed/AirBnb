@@ -1,11 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function HotelRoomCards({ hotelInfo }) {
+export default function HotelRoomCards({ hotelInfo, lang }) {
   return (
     <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {hotelInfo?.map((hotel) => (
-        <Link href="details.html" className="block group" key={hotel?.id}>
+        <Link
+          href={`/${lang}/property-details`}
+          className="block group"
+          key={hotel?.id}
+        >
           <div>
             <div className="relative">
               <Image
