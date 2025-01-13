@@ -1,22 +1,22 @@
-export default function PropertyInfo() {
+export default function PropertyInfo({ hotel }) {
   return (
     <div className="col-span-2">
       <div className="border-b pb-6 mb-6">
         <h2 className="text-2xl font-semibold mb-4">
-          Entire villa hosted by Sarah
+          {hotel?.name}hosted by {hotel?.owener}
         </h2>
         <div className="grid grid-cols-3 gap-4 text-gray-600">
           <div className="flex items-center gap-2">
             <i className="fas fa-person"></i>
-            <span>6 guests</span>
+            <span>{hotel?.totalGuests} guests</span>
           </div>
           <div className="flex items-center gap-2">
             <i className="fas fa-door-open"></i>
-            <span>3 bedrooms</span>
+            <span>{hotel?.totalRooms} bedrooms</span>
           </div>
           <div className="flex items-center gap-2">
             <i className="fas fa-bed"></i>
-            <span>4 beds</span>
+            <span>{hotel?.totalBeds} beds</span>
           </div>
         </div>
       </div>
@@ -24,13 +24,7 @@ export default function PropertyInfo() {
       {/* <!-- Description --> */}
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-4">About this place</h3>
-        <p className="text-gray-700 leading-relaxed">
-          Experience luxury in this stunning beachfront villa nestled in the
-          heart of the Maldives. Our spacious 3-bedroom villa offers
-          breathtaking ocean views, private pool, and direct beach access. Enjoy
-          modern amenities, traditional Maldivian architecture, and unparalleled
-          comfort in this tropical paradise.
-        </p>
+        <p className="text-gray-700 leading-relaxed">{hotel?.description}</p>
       </div>
 
       {/* <!-- Amenities --> */}

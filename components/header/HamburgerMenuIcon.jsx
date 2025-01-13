@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from "react";
 export default function HamburgerMenuIcon({ lang, session }) {
   const sessionData = useSession();
   const isAuthenticated = sessionData?.user;
-  console.log(isAuthenticated);
+
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef(null);
 

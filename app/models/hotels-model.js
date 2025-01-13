@@ -16,7 +16,7 @@ const hotelSchema = new Schema(
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "users",
       required: true,
     },
     pricePerNight: {
