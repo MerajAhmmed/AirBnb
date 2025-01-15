@@ -8,10 +8,8 @@ import { getDictionary } from "../dictionaries/dictionaries";
 export default async function ManageHotelsPage({ params: { lang } }) {
   const session = await auth();
   const dict = await getDictionary(lang);
-  // const hotelInfo = await getHotelByHotelId(session?.user);
-  const hotelInfo = await getAllHotels();
-  // console.log(hotelInfo);
-  console.log(session);
+
+  const { hotels: hotelInfo } = await getAllHotels();
   const serializedHotelInfo = JSON.parse(JSON.stringify(hotelInfo));
 
   if (!session) {

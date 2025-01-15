@@ -26,7 +26,7 @@ export default async function Header({ lang }) {
       <SearchBar lang={lang} />
 
       <div className="flex items-center space-x-4 relative justify-end">
-        <LanguageSwitcherBtn />
+        <LanguageSwitcherBtn lang={lang} />
         <HamburgerMenuIcon lang={lang} session={session} />
       </div>
     </nav>

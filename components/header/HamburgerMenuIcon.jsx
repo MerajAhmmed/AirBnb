@@ -82,7 +82,7 @@ export default function HamburgerMenuIcon({ lang, session }) {
                   className="w-full text-left"
                   onClick={() => {
                     signOut({
-                      callbackUrl: `http://localhost:3000/${lang}/login`,
+                      callbackUrl: `/${lang}/login`,
                     });
                   }}
                 >
