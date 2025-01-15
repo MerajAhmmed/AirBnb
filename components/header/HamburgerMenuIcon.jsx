@@ -61,6 +61,26 @@ export default function HamburgerMenuIcon({ lang, session }) {
           <ul>
             {sessionData ? (
               <>
+                <Link href={`/${lang}/login`} className="w-full">
+                  <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
+                    Login
+                  </li>
+                </Link>
+
+                <Link href={`/${lang}/register`} className="w-full">
+                  <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
+                    Signup
+                  </li>
+                </Link>
+
+                <Link href="#" className="w-full">
+                  <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
+                    Help
+                  </li>
+                </Link>
+              </>
+            ) : (
+              <>
                 <Link href={`/${lang}/create-hotels`} className="w-full">
                   <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
                     Create Hotel
@@ -90,26 +110,6 @@ export default function HamburgerMenuIcon({ lang, session }) {
                     Logout
                   </li>
                 </button>
-              </>
-            ) : (
-              <>
-                <Link href={`/${lang}/login`} className="w-full">
-                  <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
-                    Login
-                  </li>
-                </Link>
-
-                <Link href={`/${lang}/register`} className="w-full">
-                  <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
-                    Signup
-                  </li>
-                </Link>
-
-                <Link href="#" className="w-full">
-                  <li className="px-3 py-2 text-sm text-zinc-700 transition-all hover:bg-zinc-50 hover:text-zinc-800 hover:pl-4">
-                    Help
-                  </li>
-                </Link>
               </>
             )}
           </ul>

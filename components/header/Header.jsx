@@ -6,7 +6,7 @@ import HamburgerMenuIcon from "./HamburgerMenuIcon";
 import LanguageSwitcherBtn from "./LanguageSwitcherBtn";
 import SearchBar from "./SearchBar";
 
-export default async function Header({ lang }) {
+export default async function Header({ lang, dict }) {
   const session = await auth();
 
   return (
@@ -23,7 +23,7 @@ export default async function Header({ lang }) {
         </Link>
       </div>
 
-      <SearchBar lang={lang} />
+      <SearchBar dict={dict} />
 
       <div className="flex items-center space-x-4 relative justify-end">
         <LanguageSwitcherBtn lang={lang} />

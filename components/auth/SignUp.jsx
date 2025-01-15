@@ -5,7 +5,7 @@ import RegistrationFrom from "@/components/auth/RegistrationFrom";
 import SocialRegister from "@/components/auth/SocialRegister";
 import Link from "next/link";
 
-export default function SignUp() {
+export default function SignUp({ lang }) {
   return (
     <div className=" bg-white bg-opacity-50 z-50 flex items-center justify-center">
       <div className="bg-white rounded-xl shadow-2xl w-full max-w-md px-6 py-1">
@@ -30,7 +30,10 @@ export default function SignUp() {
         <div className="text-center text-sm text-gray-600 -mt-2">
           <p>
             Already have an account?
-            <Link href="#" className="text-blue-500 hover:underline">
+            <Link
+              href={`${lang}/login`}
+              className="text-blue-500 hover:underline"
+            >
               Log in
             </Link>
           </p>

@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import CloseBtn from "@/components/auth/CloseBtn";
 import LoginFrom from "@/components/auth/LoginFrom";
 import SocialLogin from "@/components/auth/SocialLogin";
